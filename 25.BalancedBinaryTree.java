@@ -1,0 +1,30 @@
+// Given a binary tree, determine if it is height-balanced.
+
+// For this problem, a height-balanced binary tree is defined as:
+
+// a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+
+// Input: root = [3,9,20,null,null,15,7]
+// Output: true
+
+
+
+
+
+class Solution {
+    
+    private int height(TreeNode root){
+    if(root==null){
+        return 0;
+    }
+    return 1+Math.max(height(root.left),height(root.right));
+  }
+   public boolean isBalanced(TreeNode root) {
+    if(root==null){
+        return true;
+    }
+    return Math.abs(height(root.left)-height(root.right))<2
+        && isBalanced(root.left)
+        && isBalanced(root.right);
+       }
+    }
